@@ -54,7 +54,8 @@ make_ami_public() {
   local image_id="$1"
   local region="$2"
 
-  aws ec2 modify-image-attribute \
+  # don't make the AMI public
+  echo aws ec2 modify-image-attribute \
     --region "$region" \
     --image-id "$image_id" \
     --launch-permission '{"Add": [{"Group": "all"}]}'
